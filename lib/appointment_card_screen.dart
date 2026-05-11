@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 // ─── Design Tokens (Figma variables) ─────────────────────────────────────────
 
@@ -54,30 +55,18 @@ abstract final class AppTextStyles {
   );
 }
 
-// ─── Asset URLs ───────────────────────────────────────────────────────────────
-// Figma-hosted assets — valid for 7 days. Replace with local assets in production:
-//   flutter pub add flutter_svg  (for SVG icons)
-//   Add assets to pubspec.yaml and use AssetImage / SvgPicture.asset instead.
+// ─── Local Assets ─────────────────────────────────────────────────────────────
 
 abstract final class _Assets {
-  static const iconConfirmed =
-      'https://www.figma.com/api/mcp/asset/e0bb5eb6-d968-4550-ad25-f15f1168d44d';
-  static const iconPhone =
-      'https://www.figma.com/api/mcp/asset/8217cacd-f7bb-45b0-9da1-a95b02bf13f3';
-  static const doctorPhoto =
-      'https://www.figma.com/api/mcp/asset/6c1130ae-5d65-48ae-b3f7-80dd28573d6b';
-  static const iconCalendar =
-      'https://www.figma.com/api/mcp/asset/e7fa8f3d-a167-4943-b260-7a8b5fc3776f';
-  static const iconClock =
-      'https://www.figma.com/api/mcp/asset/4437a582-de15-4b58-9604-b61983261710';
-  static const iconLocation =
-      'https://www.figma.com/api/mcp/asset/217d8abb-c436-4b48-a96c-ad54eba55644';
-  static const iconClipboard =
-      'https://www.figma.com/api/mcp/asset/23860014-c120-4e14-84a1-e2d02965e90a';
-  static const iconCheck =
-      'https://www.figma.com/api/mcp/asset/f44df58f-c72b-467c-be50-1dd62795e08d';
-  static const iconDirections =
-      'https://www.figma.com/api/mcp/asset/57a80fd1-81c7-443e-a226-9f0314b65cec';
+  static const iconConfirmed  = 'assets/icons/icon_confirmed.svg';
+  static const iconPhone      = 'assets/icons/icon_phone.svg';
+  static const doctorPhoto    = 'assets/images/doctor_photo.jpg';
+  static const iconCalendar   = 'assets/icons/icon_calendar.svg';
+  static const iconClock      = 'assets/icons/icon_clock.svg';
+  static const iconLocation   = 'assets/icons/icon_location.svg';
+  static const iconClipboard  = 'assets/icons/icon_clipboard.svg';
+  static const iconCheck      = 'assets/icons/icon_check.svg';
+  static const iconDirections = 'assets/icons/icon_directions.svg';
 }
 
 // ─── Screen ───────────────────────────────────────────────────────────────────
@@ -153,7 +142,7 @@ class _AppointmentHeader extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Image.network(_Assets.iconConfirmed,
+                    SvgPicture.asset(_Assets.iconConfirmed,
                         width: 16, height: 16),
                     const SizedBox(width: 8),
                     const Text(
@@ -179,7 +168,7 @@ class _AppointmentHeader extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 padding: const EdgeInsets.all(8),
-                child: Image.network(_Assets.iconPhone, fit: BoxFit.contain),
+                child: SvgPicture.asset(_Assets.iconPhone, fit: BoxFit.contain),
               ),
             ],
           ),
@@ -212,7 +201,7 @@ class _AppointmentHeader extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                   child: Container(
                     color: AppColors.lightBlueAlt,
-                    child: Image.network(
+                    child: Image.asset(
                       _Assets.doctorPhoto,
                       fit: BoxFit.cover,
                     ),
@@ -295,7 +284,7 @@ class _AppointmentDetailsCard extends StatelessWidget {
                 const SizedBox(height: 2),
                 Row(
                   children: [
-                    Image.network(_Assets.iconClock, width: 14, height: 14),
+                    SvgPicture.asset(_Assets.iconClock, width: 14, height: 14),
                     const SizedBox(width: 4),
                     const Text(
                       '10:30 AM - 11:00 AM',
@@ -398,7 +387,7 @@ class _DetailRow extends StatelessWidget {
               ],
             ),
             child: Center(
-              child: Image.network(iconUrl, width: 24, height: 24),
+              child: SvgPicture.asset(iconUrl, width: 24, height: 24),
             ),
           ),
           const SizedBox(width: 16),
@@ -476,7 +465,7 @@ class _CheckItem extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Center(
-              child: Image.network(_Assets.iconCheck, width: 14, height: 14),
+              child: SvgPicture.asset(_Assets.iconCheck, width: 14, height: 14),
             ),
           ),
           const SizedBox(width: 12),
@@ -553,7 +542,7 @@ class AppButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (iconUrl != null) ...[
-              Image.network(iconUrl!, width: 20, height: 20),
+              SvgPicture.asset(iconUrl!, width: 20, height: 20),
               const SizedBox(width: 8),
             ],
             Text(
