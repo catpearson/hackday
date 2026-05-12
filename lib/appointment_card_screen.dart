@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ─── Design Tokens (Figma variables) ─────────────────────────────────────────
 
@@ -25,34 +26,31 @@ abstract final class AppColors {
 
 abstract final class AppTextStyles {
   /// Heading One — Inter SemiBold, fontSize: Text size/Extra Large (20px)
-  static const headingOne = TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w600,
-    fontSize: 20, // Text size/Extra Large
-    height: 1.4, // lineHeight 28
-    letterSpacing: -0.449,
-    color: AppColors.white,
-  );
+  static TextStyle get headingOne => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+        height: 1.4,
+        letterSpacing: -0.449,
+        color: AppColors.white,
+      );
 
   /// Heading Two — Inter SemiBold, fontSize: Text size/Large (18px)
-  static const headingTwo = TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w600,
-    fontSize: 18, // Text size/Large
-    height: 1.5, // lineHeight 27
-    letterSpacing: -0.439,
-    color: AppColors.textDark,
-  );
+  static TextStyle get headingTwo => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 18,
+        height: 1.5,
+        letterSpacing: -0.439,
+        color: AppColors.textDark,
+      );
 
   /// Heading Three — Inter SemiBold, fontSize: 16px
-  static const headingThree = TextStyle(
-    fontFamily: 'Inter',
-    fontWeight: FontWeight.w600,
-    fontSize: 16,
-    height: 1.5, // lineHeight 24
-    letterSpacing: -0.313,
-    color: AppColors.textDark,
-  );
+  static TextStyle get headingThree => GoogleFonts.inter(
+        fontWeight: FontWeight.w600,
+        fontSize: 16,
+        height: 1.5,
+        letterSpacing: -0.313,
+        color: AppColors.textDark,
+      );
 }
 
 // ─── Local Assets ─────────────────────────────────────────────────────────────
@@ -90,7 +88,7 @@ class AppointmentCardScreen extends StatelessWidget {
                 children: [
                   const _AppointmentHeader(),
                   Positioned(
-                    top: 184, // 248 header height - 64 overlap
+                    top: 184,
                     left: 16,
                     right: 16,
                     child: _AppointmentDetailsCard(),
@@ -136,7 +134,7 @@ class _AppointmentHeader extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: const Color(0x33FFFFFF), // white 20%
+                  color: const Color(0x33FFFFFF),
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Row(
@@ -145,10 +143,9 @@ class _AppointmentHeader extends StatelessWidget {
                     SvgPicture.asset(_Assets.iconConfirmed,
                         width: 16, height: 16),
                     const SizedBox(width: 8),
-                    const Text(
+                    Text(
                       'Confirmed',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w500,
                         fontSize: 14,
                         letterSpacing: -0.150,
@@ -164,7 +161,7 @@ class _AppointmentHeader extends StatelessWidget {
                 width: 32,
                 height: 32,
                 decoration: const BoxDecoration(
-                  color: Color(0x33FFFFFF), // white 20%
+                  color: Color(0x33FFFFFF),
                   shape: BoxShape.circle,
                 ),
                 padding: const EdgeInsets.all(8),
@@ -217,10 +214,9 @@ class _AppointmentHeader extends StatelessWidget {
                     Text('Dr. Sarah Mitchell',
                         style: AppTextStyles.headingOne),
                     const SizedBox(height: 2),
-                    const Text(
+                    Text(
                       'Cardiologist',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
                         letterSpacing: -0.150,
@@ -270,10 +266,9 @@ class _AppointmentDetailsCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Monday, May 12, 2026',
-                  style: TextStyle(
-                    fontFamily: 'Inter',
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
                     height: 1.5,
@@ -286,10 +281,9 @@ class _AppointmentDetailsCard extends StatelessWidget {
                   children: [
                     SvgPicture.asset(_Assets.iconClock, width: 14, height: 14),
                     const SizedBox(width: 4),
-                    const Text(
+                    Text(
                       '10:30 AM - 11:00 AM',
-                      style: TextStyle(
-                        fontFamily: 'Inter',
+                      style: GoogleFonts.inter(
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
                         letterSpacing: -0.150,
@@ -305,13 +299,12 @@ class _AppointmentDetailsCard extends StatelessWidget {
             iconUrl: _Assets.iconLocation,
             label: 'LOCATION',
             showDivider: true,
-            child: const Text(
+            child: Text(
               'Heart & Wellness Center, 456 Medical Plaza, Bristol.',
-              style: TextStyle(
-                fontFamily: 'Inter',
+              style: GoogleFonts.inter(
                 fontWeight: FontWeight.w500,
                 fontSize: 14,
-                height: 1.375, // lineHeight ~19.25
+                height: 1.375,
                 letterSpacing: -0.150,
                 color: AppColors.textDark,
               ),
@@ -321,10 +314,9 @@ class _AppointmentDetailsCard extends StatelessWidget {
             iconUrl: _Assets.iconClipboard,
             label: 'VISIT TYPE',
             showDivider: false,
-            child: const Text(
+            child: Text(
               'Follow-up Consultation',
-              style: TextStyle(
-                fontFamily: 'Inter',
+              style: GoogleFonts.inter(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
                 height: 1.5,
@@ -397,8 +389,7 @@ class _DetailRow extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: const TextStyle(
-                    fontFamily: 'Inter',
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                     letterSpacing: 0.3,
@@ -465,18 +456,18 @@ class _CheckItem extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Center(
-              child: SvgPicture.asset(_Assets.iconCheck, width: 14, height: 14),
+              child:
+                  SvgPicture.asset(_Assets.iconCheck, width: 14, height: 14),
             ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
               text,
-              style: const TextStyle(
-                fontFamily: 'Inter',
+              style: GoogleFonts.inter(
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
-                height: 1.625, // lineHeight 22.75
+                height: 1.625,
                 letterSpacing: -0.150,
                 color: AppColors.textSecondary,
               ),
@@ -489,9 +480,6 @@ class _CheckItem extends StatelessWidget {
 }
 
 // ─── Button Component (Primary / Secondary) ───────────────────────────────────
-// Matches the "Button" component from your Figma design system:
-//   State=Primary  → blue fill, white text, optional leading icon, drop shadow
-//   State=Secondary → white fill, Grey 2 border, dark text, no shadow
 
 enum ButtonState { primary, secondary }
 
@@ -547,13 +535,11 @@ class AppButton extends StatelessWidget {
             ],
             Text(
               label,
-              style: TextStyle(
-                fontFamily: 'Inter',
+              style: GoogleFonts.inter(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
                 letterSpacing: -0.313,
-                color:
-                    _isPrimary ? AppColors.white : AppColors.textSecondary,
+                color: _isPrimary ? AppColors.white : AppColors.textSecondary,
               ),
             ),
           ],
