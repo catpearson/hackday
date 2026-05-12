@@ -90,12 +90,12 @@ class _BookingScreenState extends State<BookingScreen> {
               children: [
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(39, 79, 39, 24),
+                    padding: const EdgeInsets.fromLTRB(39, 40, 39, 24),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         _BookingHero(),
-                        const SizedBox(height: 60),
+                        const SizedBox(height: 32),
                         _InputSection(
                           label: 'Select a date',
                           value: _dateLabel,
@@ -150,7 +150,7 @@ class _BookingHero extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 47),
+        const SizedBox(height: 24),
         Text(
           'Start your booking',
           textAlign: TextAlign.center,
@@ -162,7 +162,7 @@ class _BookingHero extends StatelessWidget {
             color: AppColors.textDark,
           ),
         ),
-        const SizedBox(height: 47),
+        const SizedBox(height: 24),
         Text(
           'Select your preferred date, time and GP',
           textAlign: TextAlign.center,
