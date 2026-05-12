@@ -11,8 +11,8 @@ class BookingScreen extends StatefulWidget {
 }
 
 class _BookingScreenState extends State<BookingScreen> {
-  DateTime? _selectedDate;
-  TimeOfDay? _selectedTime;
+  DateTime _selectedDate = DateTime.now();
+  TimeOfDay _selectedTime = TimeOfDay.now();
 
   Future<void> _pickDate() async {
     final picked = await showDatePicker(
@@ -51,20 +51,17 @@ class _BookingScreenState extends State<BookingScreen> {
   }
 
   String get _dateLabel {
-    if (_selectedDate == null) return '';
-    final d = _selectedDate!;
     const months = [
       'January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
-    return '${d.day} ${months[d.month - 1]} ${d.year}';
+    return '${_selectedDate.day} ${months[_selectedDate.month - 1]} ${_selectedDate.year}';
   }
 
   String get _timeLabel {
-    if (_selectedTime == null) return '';
-    final h = _selectedTime!.hourOfPeriod == 0 ? 12 : _selectedTime!.hourOfPeriod;
-    final m = _selectedTime!.minute.toString().padLeft(2, '0');
-    final period = _selectedTime!.period == DayPeriod.am ? 'AM' : 'PM';
+    final h = _selectedTime.hourOfPeriod == 0 ? 12 : _selectedTime.hourOfPeriod;
+    final m = _selectedTime.minute.toString().padLeft(2, '0');
+    final period = _selectedTime.period == DayPeriod.am ? 'AM' : 'PM';
     return '$h:$m $period';
   }
 
@@ -102,14 +99,14 @@ class _BookingScreenState extends State<BookingScreen> {
                         _InputSection(
                           label: 'Select a date',
                           value: _dateLabel,
-                          placeholder: 'Tap to choose a date',
+                          iconUrl: 'assets/icons/icon_calendar.svg',
                           onTap: _pickDate,
                         ),
                         const SizedBox(height: 24),
                         _InputSection(
                           label: 'Select a time',
                           value: _timeLabel,
-                          placeholder: 'Tap to choose a time',
+                          iconUrl: 'assets/icons/icon_clock.svg',
                           onTap: _pickTime,
                         ),
                       ],
@@ -186,13 +183,13 @@ class _InputSection extends StatelessWidget {
   const _InputSection({
     required this.label,
     required this.value,
-    required this.placeholder,
+    required this.iconUrl,
     required this.onTap,
   });
 
   final String label;
   final String value;
-  final String placeholder;
+  final String iconUrl;
   final VoidCallback onTap;
 
   @override
@@ -220,20 +217,33 @@ class _InputSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: const Color(0xFF6A7282)),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                value.isEmpty ? placeholder : value,
-                style: GoogleFonts.inter(
-                  fontWeight: value.isEmpty ? FontWeight.w400 : FontWeight.w500,
-                  fontSize: 16,
-                  letterSpacing: -0.313,
-                  color: value.isEmpty
-                      ? const Color(0xFF6A7282)
-                      : AppColors.textDark,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Row(
+              children: [
+                Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(iconUrl, width: 20, height: 20),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    value,
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      letterSpacing: -0.313,
+                      color: AppColors.textDark,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
