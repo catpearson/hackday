@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'appointment_card_screen.dart';
+import 'welcome_screen.dart';
 
 void main() {
   runApp(const HackdayApp());
@@ -13,7 +13,7 @@ class HackdayApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Hackday',
       debugShowCheckedModeBanner: false,
-      home: AppointmentCardScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

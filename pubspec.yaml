@@ -66,4 +66,5 @@ flutter:
     - assets/icons/icon_clipboard.svg
     - assets/icons/icon_check.svg
     - assets/icons/icon_directions.svg
+    - assets/icons/icon_person.svg
     - assets/images/doctor_photo.jpg
