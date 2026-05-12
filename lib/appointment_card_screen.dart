@@ -15,7 +15,7 @@ abstract final class AppColors {
   static const grey2 = Color(0xFFE5E7EB);
 
   /// Black — Figma variable "Black"
-  static const black = Color(0xFF000000);
+  static const black = Color(0xFF364153);
 
   static const grey50 = Color(0xFFF9FAFB);
   static const grey100 = Color(0xFFF3F4F6);
