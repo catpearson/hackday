@@ -17,6 +17,9 @@ abstract final class AppColors {
   /// Black — Figma variable "Black"
   static const black = Color(0xFF364153);
 
+  /// Purple — Figma variable "Purple"
+  static const purple = Color(0xFFBA55D3);
+
   static const grey50 = Color(0xFFF9FAFB);
   static const grey100 = Color(0xFFF3F4F6);
   static const textDark = Color(0xFF101828);
@@ -516,7 +519,7 @@ class AppButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor:
-              _isPrimary ? AppColors.black : AppColors.white,
+              _isPrimary ? AppColors.purple : AppColors.white,
           foregroundColor:
               _isPrimary ? AppColors.white : AppColors.textSecondary,
           elevation: _isPrimary ? 4 : 0,
